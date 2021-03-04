@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OMNOMNOM</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<body>
+<div th:replace="fragments.html :: header-menu"></div>
+
+<div id="content">
+    <th:block th:each="dish : ${dishes}">
+        <div class="book-box">
+            <img id="image" th:src="@{${dish.photosImagePath}}"/>
+            <div th:text="${dish.name}" class="title-box"></div>
+            <div class="book-data-box">
+                <div th:text="'Calories: ' + ${dish.calories} + ' ccal'"></div>
+                <div th:text="'Weight: ' + ${dish.weight} + ' gr'"></div>
+                <div th:text="'Price: ' + ${dish.price} + ' $'"></div>
+                <div th:text="'Restoration: ' + ${dish.restName}"></div>
+                <a th:href="@{/addToBasket/{id}(id=${dish.id})}" class="buy-button"><!--th:if="${isLogged == true}"--><i class="icon ion-ios-personadd"></i></a>
+                <a th:if="${role == 'CUSTOMER'}" th:href="@{/editDish/{id}(id=${dish.id})}"><i class="icon ion-edit"></i></a>
+            </div>
+        </div>
+    </th:block>
+</div>
+
+<div th:replace="fragments.html :: footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

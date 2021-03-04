@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OMNOMNOM</title>
+    <link rel="stylesheet" href="css/newDish.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<body>
+<div th:replace="fragments.html :: header-menu"></div>
+
+<form method="post"
+      enctype="multipart/form-data"
+      id="add-product-form">
+    <p>
+        <label>Add Picture:</label>
+        <input type="file" name="image" id="image" accept="image/png, image/jpeg" />
+    </p>
+    <p>
+        <img id="view" alt="Phone preview"/>
+    </p>
+
+    <input type="text" placeholder="Name" th:field="*{newDish.name}">
+    <input type="text" placeholder="Weight" th:field="*{newDish.weight}">
+    <input type="text" placeholder="Calories" th:field="*{newDish.calories}">
+    <input type="text" placeholder="Price" th:field="*{newDish.price}">
+    <input type="text" placeholder="Restoration Name" th:field="*{newDish.restName}">
+
+    <input type="submit" value="Create">
+</form>
+
+<div th:replace="fragments.html :: footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
